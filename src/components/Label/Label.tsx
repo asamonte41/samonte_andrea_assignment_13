@@ -15,12 +15,18 @@ export const StyledLabel = styled.label`
   }
 `;
 
-const Label: React.FC<LabelProps> = ({ text, htmlFor, required = false }) => {
+const Label: React.FC<LabelProps> = ({
+  children,
+  htmlFor,
+  required = false,
+  className = '',
+  style,
+}) => {
   return (
-    <StyledLabel htmlFor={htmlFor}>
-      {text}
-      {required && <span aria-hidden="true">*</span>}
-    </StyledLabel>
+    <label htmlFor={htmlFor} className={className} style={style}>
+      {children}
+      {required && <span style={{ color: 'red', marginLeft: '0.25rem' }}>*</span>}
+    </label>
   );
 };
 

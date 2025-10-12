@@ -5,9 +5,11 @@ export interface DropdownOption {
 
 export interface DropdownProps {
   label?: string;
-  name: string;
-  options: DropdownOption[];
-  placeholder?: string;
+  name?: string;
   required?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: DropdownOption[];
+  value?: string; // ✅ Add this line
+  onChange?: (value: string) => void;
+  className?: string;
+  style?: React.CSSProperties;
 }

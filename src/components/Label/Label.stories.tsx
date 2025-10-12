@@ -1,32 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Label from './Label';
+import { LabelProps } from './Label.types';
 
-const meta: Meta<typeof Label> = {
+const meta: Meta<LabelProps> = {
   title: 'Components/Label',
   component: Label,
   tags: ['autodocs'],
-  argTypes: {
-    text: { control: 'text' },
-    htmlFor: { control: 'text' },
-    required: { control: 'boolean' },
-  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Label>;
+
+type Story = StoryObj<LabelProps>;
 
 export const Default: Story = {
   args: {
-    text: 'Username',
+    children: 'Username',
     htmlFor: 'username',
-    required: false,
   },
 };
 
 export const Required: Story = {
   args: {
-    text: 'Email',
+    children: 'Email',
     htmlFor: 'email',
     required: true,
+  },
+};
+
+export const WithCustomStyle: Story = {
+  args: {
+    children: 'Styled Label',
+    htmlFor: 'custom',
+    style: { fontWeight: 'bold', fontSize: '1.2rem' },
   },
 };

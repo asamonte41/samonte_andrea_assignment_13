@@ -1,29 +1,40 @@
 import React from 'react';
-import type { TextProps } from './Text.types';
-import styled from 'styled-components';
+import { TextProps } from './Text.types';
 
-interface StyledProps {
-  size: 'sm' | 'md' | 'lg';
-  color: 'default' | 'muted' | 'danger';
-  align: 'left' | 'center' | 'right';
-}
+const sizeMap = {
+  sm: '0.875rem',
+  md: '1rem',
+  lg: '1.25rem',
+};
 
-export const StyledText = styled.p<StyledProps>`
-  font-size: ${({ size }) =>
-    size === 'sm' ? '0.75rem' :
-    size === 'lg' ? '1.25rem' : '1rem'};
-  color: ${({ color }) =>
-    color === 'muted' ? '#666' :
-    color === 'danger' ? '#c00' : '#222'};
-  text-align: ${({ align }) => align};
-  margin: 0.5rem 0;
-`;
+const colorMap = {
+  primary: '#007bff',
+  danger: '#c00',
+  success: '#28a745',
+};
 
-const Text: React.FC<TextProps> = ({ children, size = 'md', color = 'default', align = 'left' }) => {
+const Text: React.FC<TextProps> = ({
+  children,
+  id,
+  size = 'md',
+  color = 'primary',
+  align = 'left',
+  className = '',
+  style,
+}) => {
   return (
-    <StyledText size={size} color={color} align={align}>
+    <span
+      id={id}
+      className={`text ${className}`}
+      style={{
+        fontSize: sizeMap[size],
+        color: colorMap[color],
+        textAlign: align,
+        ...style,
+      }}
+    >
       {children}
-    </StyledText>
+    </span>
   );
 };
 

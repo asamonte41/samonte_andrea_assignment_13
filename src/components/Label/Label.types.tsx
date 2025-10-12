@@ -1,5 +1,9 @@
+import React from 'react';
+
 export interface LabelProps {
-  text: string;
+  children: React.ReactNode;
   htmlFor?: string;
   required?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }

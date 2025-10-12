@@ -1,65 +1,41 @@
 import React from 'react';
-import type { RadioButtonProps } from './RadioButton.types';
+import { RadioButtonProps } from './RadioButton.types';
 import styled from 'styled-components';
-
-export const StyledWrapper = styled.div`
-  margin: 1rem 0;
-`;
-
-export const StyledLabel = styled.label`
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #222;
-
-  span {
-    color: red;
-    margin-left: 0.25rem;
-  }
-`;
-
-export const StyledOption = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-
-  input[type='radio'] {
-    margin-right: 0.5rem;
-  }
-`;
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   label,
   name,
-  options,
   required = false,
+  options,
   selectedValue,
   onChange,
+  className = '',
+  style,
 }) => {
   return (
-    <StyledWrapper>
+    <div className={`radio-group ${className}`} style={style}>
       {label && (
-        <StyledLabel>
+        <label>
           {label}
-          {required && <span>*</span>}
-        </StyledLabel>
+          {required && <span style={{ color: 'red', marginLeft: '0.25rem' }}>*</span>}
+        </label>
       )}
       {options.map((opt) => (
-        <StyledOption key={opt.value}>
+        <label key={opt.value} style={{ display: 'block', marginTop: '0.5rem' }}>
           <input
             type="radio"
-            id={`${name}-${opt.value}`}
             name={name}
             value={opt.value}
             checked={selectedValue === opt.value}
-            onChange={onChange}
+            onChange={() => onChange?.(opt.value)}
             required={required}
           />
-          <label htmlFor={`${name}-${opt.value}`}>{opt.label}</label>
-        </StyledOption>
+          {opt.label}
+        </label>
       ))}
-    </StyledWrapper>
+    </div>
   );
 };
 
 export default RadioButton;
+

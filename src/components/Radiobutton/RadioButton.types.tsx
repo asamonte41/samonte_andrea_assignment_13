@@ -5,9 +5,11 @@ export interface RadioOption {
 
 export interface RadioButtonProps {
   label?: string;
-  name: string;
-  options: RadioOption[];
+  name?: string;
   required?: boolean;
+  options: RadioOption[];
   selectedValue?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: string) => void;
+  className?: string;
+  style?: React.CSSProperties;
 }

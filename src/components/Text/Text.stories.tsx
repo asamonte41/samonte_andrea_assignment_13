@@ -13,32 +13,11 @@ const meta: Meta<typeof Text> = {
   },
 };
 
-export default meta;
-type Story = StoryObj<typeof Text>;
-
-export const Default: Story = {
-  args: {
-    children: 'This is a default paragraph.',
-    size: 'md',
-    color: 'default',
-    align: 'left',
-  },
+export default {
+  title: 'Components/Text',
+  component: Text,
 };
 
-export const Muted: Story = {
-  args: {
-    children: 'This is muted text.',
-    size: 'sm',
-    color: 'muted',
-    align: 'center',
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    children: 'This is danger text!',
-    size: 'lg',
-    color: 'danger',
-    align: 'right',
-  },
-};
+export const Default = () => <Text>This is default text</Text>;
+export const LargeDanger = () => <Text size="lg" color="danger">Danger Text</Text>;
+export const Centered = () => <Text align="center">Centered Text</Text>;

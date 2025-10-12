@@ -1,5 +1,10 @@
+import React from 'react';
+
 export interface ButtonProps {
-  label: string;
+  children: React.ReactNode;
+  id?: string;
   disabled?: boolean;
   onClick?: () => void;
+  className?: string;
+  style?: React.CSSProperties;
 }

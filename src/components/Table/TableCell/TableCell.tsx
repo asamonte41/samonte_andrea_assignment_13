@@ -7,6 +7,7 @@ const TableCell: React.FC<TableCellProps> = ({
   className = '',
   style,
   isHeader = false,
+  colSpan,
 }) => {
   const CellTag = isHeader ? 'th' : 'td';
 
@@ -19,6 +20,7 @@ const TableCell: React.FC<TableCellProps> = ({
         borderBottom: '1px solid #eee',
         ...style,
       }}
+      colSpan={colSpan}
     >
       {children}
     </CellTag>

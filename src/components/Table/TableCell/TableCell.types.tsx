@@ -6,4 +6,5 @@ export interface TableCellProps {
   className?: string;
   style?: React.CSSProperties;
   isHeader?: boolean;
+  colSpan?: number;
 }
