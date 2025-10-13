@@ -1,23 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Text from './Text';
+import { TextProps } from './Text.types';
 
-const meta: Meta<typeof Text> = {
+const meta: Meta<TextProps> = {
   title: 'Components/Text',
   component: Text,
   tags: ['autodocs'],
-  argTypes: {
-    children: { control: 'text' },
-    size: { control: 'radio', options: ['sm', 'md', 'lg'] },
-    color: { control: 'radio', options: ['default', 'muted', 'danger'] },
-    align: { control: 'radio', options: ['left', 'center', 'right'] },
+};
+
+export default meta;
+
+type Story = StoryObj<TextProps>;
+
+export const Default: Story = {
+  args: {
+    children: 'DEFAULT TEXT',
+    onClick: () => alert('Text clicked'),
   },
 };
 
-export default {
-  title: 'Components/Text',
-  component: Text,
+export const Disabled: Story = {
+  args: {
+    children: 'DISABLED TEXT',
+    disabled: true,
+  },
 };
-
-export const Default = () => <Text>This is default text</Text>;
-export const LargeDanger = () => <Text size="lg" color="danger">Danger Text</Text>;
-export const Centered = () => <Text align="center">Centered Text</Text>;

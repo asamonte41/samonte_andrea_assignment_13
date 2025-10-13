@@ -1,9 +1,8 @@
 export interface TextProps {
-  children: React.ReactNode;
   id?: string;
-  size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'danger' | 'success';
-  align?: 'left' | 'center' | 'right';
+  children: React.ReactNode;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  onClick?: () => void;
 }

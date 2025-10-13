@@ -1,9 +1,10 @@
 export interface HeroImageProps {
   src: string;
-  alt: string;
-  title?: string;
+  alt?: string;
+   title?: string;
   subtitle?: string;
-  height?: string | number;
-  overlay?: boolean;
+  disabled?: boolean;
   className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
 }

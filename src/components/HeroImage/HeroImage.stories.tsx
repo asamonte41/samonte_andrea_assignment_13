@@ -1,30 +1,30 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react-webpack5';
 import HeroImage from './HeroImage';
+import { HeroImageProps } from './HeroImage.types';
 
-const meta: Meta<typeof HeroImage> = {
+const meta: Meta<HeroImageProps> = {
   title: 'Components/HeroImage',
   component: HeroImage,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof HeroImage>;
+
+type Story = StoryObj<HeroImageProps>;
 
 export const Default: Story = {
   args: {
     src: '/images/wp2.jpg',
-    alt: 'Hero banner',
-    title: 'Hello Welcome',
-    subtitle: 'This is for Assignment 12',
-    overlay: true,
+    alt: 'Default Hero',
+    onClick: () => alert('Hero image clicked'),
   },
 };
 
-export const NoOverlay: Story = {
+export const Disabled: Story = {
   args: {
     src: '/images/wp2.jpg',
-    alt: 'Plain banner',
-    overlay: false,
+    alt: 'Disabled Hero',
+    disabled: true,
   },
 };

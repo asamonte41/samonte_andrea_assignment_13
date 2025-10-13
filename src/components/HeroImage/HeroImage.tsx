@@ -3,56 +3,40 @@ import { HeroImageProps } from './HeroImage.types';
 
 const HeroImage: React.FC<HeroImageProps> = ({
   src,
-  alt,
+  alt = '',
   title,
   subtitle,
-  height = '400px',
-  overlay = true,
+  disabled = false,
   className = '',
+  style,
+  onClick,
 }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onClick?.();
+    }
+  };
+
   return (
-    <div
-      className={`hero-image-container ${className}`}
-      style={{
-        position: 'relative',
-        width: '100%',
-        height,
-        overflow: 'hidden',
-      }}
-    >
+    <div className={`hero-image-wrapper ${className}`} style={style}>
+      {title && <h2 style={{ margin: 0 }}>{title}</h2>}
+      {subtitle && <p style={{ marginTop: '0.25rem', color: '#666' }}>{subtitle}</p>}
       <img
         src={src}
         alt={alt}
         style={{
+          opacity: disabled ? 0.5 : 1,
+          pointerEvents: disabled ? 'none' : 'auto',
+          cursor: disabled ? 'not-allowed' : 'pointer',
           width: '100%',
-          height: '100%',
-          objectFit: 'cover',
+          height: 'auto',
         }}
+        onClick={handleClick}
       />
-      {overlay && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#fff',
-            padding: '1rem',
-            textAlign: 'center',
-          }}
-        >
-          {title && <h1 style={{ margin: 0 }}>{title}</h1>}
-          {subtitle && <p style={{ marginTop: '0.5rem' }}>{subtitle}</p>}
-        </div>
-      )}
     </div>
   );
 };
 
 export default HeroImage;
+
+

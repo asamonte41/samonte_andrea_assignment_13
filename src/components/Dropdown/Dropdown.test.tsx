@@ -1,22 +1,43 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render,fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Dropdown from './Dropdown';
 
 describe('Dropdown Component', () => {
-  it('renders label and options', () => {
+  it('renders default dropdown and responds to change', () => {
+    const handleChange = jest.fn();
     render(
       <Dropdown
-        label="Select item"
-        name="item"
+        value="apple"
         options={[
-          { label: 'One', value: '1' },
-          { label: 'Two', value: '2' },
+          { label: 'Apple', value: 'apple' },
+          { label: 'Banana', value: 'banana' },
         ]}
+        onChange={handleChange}
       />
     );
-    expect(screen.getByLabelText('Select item')).toBeInTheDocument();
-    expect(screen.getByText('One')).toBeInTheDocument();
-    expect(screen.getByText('Two')).toBeInTheDocument();
+    fireEvent.change(screen.getByDisplayValue('Apple'), {
+      target: { value: 'banana' },
+    });
+    expect(handleChange).toHaveBeenCalledWith('banana');
+  });
+
+  it('renders disabled dropdown and does not respond to change', () => {
+    const handleChange = jest.fn();
+    render(
+      <Dropdown
+        value="banana"
+        options={[
+          { label: 'Apple', value: 'apple' },
+          { label: 'Banana', value: 'banana' },
+        ]}
+        disabled
+        onChange={handleChange}
+      />
+    );
+    const dropdown = screen.getByDisplayValue('Banana');
+    expect(dropdown).toBeDisabled();
+    fireEvent.change(dropdown, { target: { value: 'apple' } });
+    expect(handleChange).not.toHaveBeenCalled();
   });
 });

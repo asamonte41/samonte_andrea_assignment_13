@@ -7,9 +7,6 @@ const meta: Meta<ButtonProps> = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
-  argTypes: {
-    onClick: { action: 'clicked' },
-  },
 };
 
 export default meta;
@@ -19,15 +16,7 @@ type Story = StoryObj<ButtonProps>;
 export const Default: Story = {
   args: {
     children: 'Click Me',
-    id: "",
-    disabled: false
-  },
-};
-
-export const Primary: Story = {
-  args: {
-    children: 'Primary Button',
-    style: { backgroundColor: '#007bff', color: '#fff' },
+    onClick: () => alert('Button clicked'),
   },
 };
 
@@ -38,22 +27,3 @@ export const Disabled: Story = {
   },
 };
 
-export const CustomStyled: Story = {
-  args: {
-    children: 'Custom Button',
-    style: {
-      backgroundColor: '#6c757d',
-      color: '#fff',
-      padding: '0.75rem 1.5rem',
-      fontSize: '1rem',
-    },
-  },
-};
-
-export const WithIdAndClass: Story = {
-  args: {
-    children: 'Button with ID',
-    id: 'custom-button',
-    className: 'custom-class',
-  },
-};

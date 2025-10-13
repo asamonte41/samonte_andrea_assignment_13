@@ -1,22 +1,22 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Label from './Label';
 
 describe('Label Component', () => {
-  it('renders label text', () => {
-    render(<Label htmlFor="username">Username</Label>);
-    expect(screen.getByText('Username')).toBeInTheDocument();
+  it('renders default label and responds to click', () => {
+    const handleClick = jest.fn();
+    render(<Label onClick={handleClick}>Username</Label>);
+    const label = screen.getByText('Username');
+    fireEvent.click(label);
+    expect(handleClick).toHaveBeenCalled();
   });
 
-  it('shows asterisk when required', () => {
-    render(<Label htmlFor="email" required>Email</Label>);
-    expect(screen.getByText('*')).toBeInTheDocument();
-  });
-
-  it('associates with htmlFor', () => {
-    render(<Label htmlFor="password">Password</Label>);
-    const label = screen.getByText('Password');
-    expect(label).toHaveAttribute('for', 'password');
+  it('renders disabled label and does not respond to click', () => {
+    const handleClick = jest.fn();
+    render(<Label disabled onClick={handleClick}>Username</Label>);
+    const label = screen.getByText('Username');
+    fireEvent.click(label);
+    expect(handleClick).not.toHaveBeenCalled();
   });
 });

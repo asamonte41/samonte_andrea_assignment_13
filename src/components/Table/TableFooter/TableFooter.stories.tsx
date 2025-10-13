@@ -1,32 +1,29 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react-webpack5';
 import TableFooter from './TableFooter';
+import { TableFooterProps } from './TableFooter.types';
 
-const meta: Meta<typeof TableFooter> = {
+
+const meta: Meta<TableFooterProps> = {
   title: 'Components/TableFooter',
   component: TableFooter,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof TableFooter>;
+
+type Story = StoryObj<TableFooterProps>;
 
 export const Default: Story = {
   args: {
-    children: 'Total: $1,234.56',
+    children: <tr><td>Total: $100</td></tr>,
+    onClick: () => alert('Footer clicked'),
   },
 };
 
-export const WithColSpan: Story = {
+export const Disabled: Story = {
   args: {
-    children: 'Summary Row',
-    colSpan: 3,
-  },
-};
-
-export const Styled: Story = {
-  args: {
-    children: 'Styled Footer',
-    style: { backgroundColor: '#e0e0e0', color: '#333' },
+    children: <tr><td>Total: $100</td></tr>,
+    disabled: true,
   },
 };

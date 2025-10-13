@@ -4,12 +4,12 @@ export interface RadioOption {
 }
 
 export interface RadioButtonProps {
-  label?: string;
-  name?: string;
-  required?: boolean;
-  options: RadioOption[];
-  selectedValue?: string;
-  onChange?: (value: string) => void;
+  label: string;
+  name: string;
+  value: string;
+  checked?: boolean;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  onChange?: (value: string) => void;
 }

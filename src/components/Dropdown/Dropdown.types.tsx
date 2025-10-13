@@ -8,8 +8,9 @@ export interface DropdownProps {
   name?: string;
   required?: boolean;
   options: DropdownOption[];
-  value?: string; // ✅ Add this line
+  value?: string;
   onChange?: (value: string) => void;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }

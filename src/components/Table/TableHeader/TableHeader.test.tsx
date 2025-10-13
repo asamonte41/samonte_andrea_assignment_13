@@ -1,34 +1,37 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TableHeader from './TableHeader';
 
 describe('TableHeader Component', () => {
-  const headers = ['Name', 'Age', 'Role'];
-
-  it('renders all header cells', () => {
-    render(
-      <table>
-        <TableHeader headers={headers} />
-      </table>
-    );
-    headers.forEach((text) => {
-      expect(screen.getByText(text)).toBeInTheDocument();
-    });
-  });
-
-  it('applies custom className and style', () => {
+  it('renders default header and responds to click', () => {
+    const handleClick = jest.fn();
     render(
       <table>
         <TableHeader
-          headers={headers}
-          className="custom-header"
-          style={{ backgroundColor: 'lightgray' }}
+          headers={['Name', 'Email', 'Role']}
+          onClick={handleClick}
         />
       </table>
     );
-    const thead = screen.getByText('Name').closest('thead');
-    expect(thead).toHaveClass('custom-header');
-    expect(thead).toHaveStyle({ backgroundColor: 'lightgray' });
+    const cell = screen.getByText('Name');
+    fireEvent.click(cell);
+    expect(handleClick).toHaveBeenCalled();
+  });
+
+  it('renders disabled header and does not respond to click', () => {
+    const handleClick = jest.fn();
+    render(
+      <table>
+        <TableHeader
+          headers={['Name', 'Email', 'Role']}
+          disabled
+          onClick={handleClick}
+        />
+      </table>
+    );
+    const cell = screen.getByText('Name');
+    fireEvent.click(cell);
+    expect(handleClick).not.toHaveBeenCalled();
   });
 });

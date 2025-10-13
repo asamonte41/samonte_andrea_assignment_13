@@ -1,31 +1,29 @@
 import { Meta, StoryObj } from '@storybook/react-webpack5';
 import TableHeader from './TableHeader';
+import { TableHeaderProps } from './TableHeader.types';
 
-const meta: Meta<typeof TableHeader> = {
+const meta: Meta<TableHeaderProps> = {
   title: 'Components/TableHeader',
   component: TableHeader,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof TableHeader>;
+
+type Story = StoryObj<TableHeaderProps>;
 
 export const Default: Story = {
   args: {
-    headers: ['Name', 'Age', 'Occupation'],
+    headers: ['Name', 'Email', 'Role'],
+    align: 'left',
+    onClick: () => alert('Header clicked'),
   },
 };
 
-export const Centered: Story = {
+export const Disabled: Story = {
   args: {
-    headers: ['Product', 'Price'],
-    align: 'center',
-  },
-};
-
-export const Styled: Story = {
-  args: {
-    headers: ['ID', 'Status'],
-    style: { backgroundColor: '#f0f0f0', fontWeight: 'bold' },
+    headers: ['Name', 'Email', 'Role'],
+    align: 'left',
+    disabled: true,
   },
 };

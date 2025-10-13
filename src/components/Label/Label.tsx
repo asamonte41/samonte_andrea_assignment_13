@@ -18,16 +18,35 @@ export const StyledLabel = styled.label`
 const Label: React.FC<LabelProps> = ({
   children,
   htmlFor,
-  required = false,
+  disabled = false,
   className = '',
   style,
+  onClick,
 }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onClick?.();
+    }
+  };
+
   return (
-    <label htmlFor={htmlFor} className={className} style={style}>
+    <label
+      htmlFor={htmlFor}
+      className={`label ${className}`}
+      style={{
+        display: 'inline-block',
+        color: disabled ? '#999' : '#000',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.6 : 1,
+        ...style,
+      }}
+      onClick={handleClick}
+    >
       {children}
-      {required && <span style={{ color: 'red', marginLeft: '0.25rem' }}>*</span>}
     </label>
   );
 };
 
 export default Label;
+
+

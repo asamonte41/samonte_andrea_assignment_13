@@ -1,9 +1,10 @@
 import React from 'react';
 
 export interface CardProps {
+  children: React.ReactNode;
   title?: string;
   subtitle?: string;
-  children: React.ReactNode;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }

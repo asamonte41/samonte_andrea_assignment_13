@@ -4,25 +4,15 @@ import '@testing-library/jest-dom';
 import Card from './Card';
 
 describe('Card Component', () => {
-  it('renders children content', () => {
-    render(<Card>Test content</Card>);
-    expect(screen.getByText('Test content')).toBeInTheDocument();
+  it('renders default card', () => {
+    render(<Card>This is a card</Card>);
+    expect(screen.getByText('This is a card')).toBeInTheDocument();
   });
 
-  it('renders title and subtitle when provided', () => {
-    render(<Card title="Card Title" subtitle="Card Subtitle">Content</Card>);
-    expect(screen.getByText('Card Title')).toBeInTheDocument();
-    expect(screen.getByText('Card Subtitle')).toBeInTheDocument();
-  });
-
-  it('applies custom className and style', () => {
-    render(
-      <Card className="custom-card" style={{ backgroundColor: 'lightblue' }}>
-        Styled content
-      </Card>
-    );
-    const container = screen.getByText('Styled content').parentElement;
-    expect(container).toHaveClass('custom-card');
-    expect(container).toHaveStyle({ backgroundColor: 'lightblue' });
+  it('renders disabled card with reduced opacity', () => {
+    render(<Card disabled>This is disabled</Card>);
+    const card = screen.getByTestId('card');
+    expect(card).toHaveStyle('opacity: 0.5');
   });
 });
+

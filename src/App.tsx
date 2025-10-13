@@ -14,37 +14,77 @@ import { Button } from './components/Button';
 import { Label } from './components/Label';
 import { Text } from './components/Text';
 import { Dropdown } from './components/Dropdown';
-import { RadioButton } from './components/Radiobutton';
+import RadioButton from './components/Radiobutton/RadioButton';
 
 function App() {
   return (
     <div className="App" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       {/* HeroImage */}
-      <HeroImage
-        src="https://via.placeholder.com/1200x400"
-        alt="Hero banner"
-        title="Welcome to the UI Garden"
-        subtitle="Explore reusable components"
-      />
+      <div
+        style={{
+          position: 'relative',
+          textAlign: 'center',
+          color: 'white',
+          marginBottom: '2rem',
+        }}
+      >
+        <HeroImage
+          src="/images/wp2.jpg"
+          alt="Hero banner"
+          title=""
+          subtitle=""
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <h1 style={{ margin: 0 }}>Business Systems Build and Testing</h1>
+          <p>This is for my Hero Image</p>
+        </div>
+      </div>
 
       {/* Card */}
       <Card title="Card Title" subtitle="Card Subtitle">
-        This is a sample card with some content inside.
+        This is my card sample.
       </Card>
 
       {/* Img */}
-      <Img
-        src="https://via.placeholder.com/150"
-        alt="Sample image"
-        width={150}
-        height={150}
-        rounded
-      />
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+        <Img
+          src="/images/imfine.jpg"
+          alt="Sample image"
+          width={200}
+          height={200}
+          rounded
+        />
+      </div>
 
       {/* Label and Text */}
-      <div style={{ marginTop: '2rem' }}>
-        <Label htmlFor="username">Username</Label>
-        <Text id="username" children="andrea.samonte" />
+      <div style={{ marginTop: '1rem', marginBottom: '2rem' }}>
+        <Label
+          htmlFor="username"
+          style={{ color: 'red', display: 'block', marginBottom: '0.25rem' }}
+        >
+          ASAMONTE41
+        </Label>
+      </div>
+
+      {/* Text */}
+      <div style={{ marginTop: '1rem', marginBottom: '2rem' }}>
+        <Text id="dtext" style={{ color: 'pink' }}>
+          DEFAULT TEXT
+        </Text>
       </div>
 
       {/* Button */}
@@ -54,51 +94,83 @@ function App() {
 
       {/* Dropdown */}
       <div style={{ marginTop: '1rem' }}>
-
-      <Dropdown
-        label="Choose a fruit"
-        name="fruit"
-        required
-        value="apple"
-        onChange={() => {}}
-        options={[
-          { label: 'Apple', value: 'apple' },
-          { label: 'Banana', value: 'banana' },
-        ]}
-      />
-
-      </div>
-
-      {/* RadioButton */}
-      <div style={{ marginTop: '1rem' }}>
-        <RadioButton
-          name="gender"
+        <Dropdown
+          label="Choose a fruit"
+          name="fruit"
+          required
+          value="apple"
+          onChange={() => {}}
           options={[
-            { label: 'Female', value: 'female' },
-            { label: 'Male', value: 'male' },
+            { label: 'Apple', value: 'apple' },
+            { label: 'Banana', value: 'banana' },
           ]}
-          selectedValue="female"
-          onChange={(value) => console.log('Selected:', value)}
-        required
         />
-
       </div>
 
-      {/* Table */}
-      <table style={{ marginTop: '2rem', width: '100%', borderCollapse: 'collapse' }}>
-        <TableHeader headers={['Name', 'Age', 'Occupation']} />
-        <tbody>
-          <TableRow cells={['Alice', 30, 'Engineer']} />
-          <TableRow cells={['Bob', 25, 'Designer']} />
-          <TableRow cells={['Charlie', 35, 'Manager']} />
-          <tr>
-            <TableCell align="right" colSpan={3}>
-              Custom Cell Footer
-            </TableCell>
-          </tr>
-        </tbody>
-        <TableFooter colSpan={3}>Total Employees: 3</TableFooter>
-      </table>
+      {/* Radio Button */}
+            <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '30vh',
+          flexDirection: 'column',
+        }}
+        >
+        <h3>Favourite Utensil?</h3>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <label>
+            <input type="radio" name="utensil" value="Spoon" defaultChecked />
+            Spoon
+          </label>
+          <label>
+            <input type="radio" name="utensil" value="Fork" />
+            Fork
+          </label>
+          <label>
+            <input type="radio" name="utensil" value="Spork" />
+            Spork
+          </label>
+        </div>
+      </div>
+
+
+      {/* Centered Table */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+        <table
+          style={{
+            width: '80%',
+            borderCollapse: 'collapse',
+            textAlign: 'center',
+            margin: '0 auto',
+          }}
+        >
+          <thead>
+            <tr>
+              {['Name', 'Age', 'Occupation'].map((header, index) => (
+                <TableCell key={index} isHeader align="center">
+                  {header}
+                </TableCell>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <TableRow cells={['Alice', 20, 'Admin']} />
+            <TableRow cells={['Hannah', 45, 'Assistant']} />
+            <TableRow cells={['Bob', 20, 'HR']} />
+            <tr>
+              <TableCell align="center" colSpan={3}>
+                Sample of a Table Cell
+              </TableCell>
+            </tr>
+          </tbody>
+          <TableFooter colSpan={3}>
+            <div style={{ textAlign: 'center' }}>
+              Total Employees: 3 (Sample of a Table Footer)
+            </div>
+          </TableFooter>
+        </table>
+      </div>
     </div>
   );
 }

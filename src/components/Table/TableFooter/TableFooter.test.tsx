@@ -1,33 +1,34 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TableFooter from './TableFooter';
 
 describe('TableFooter Component', () => {
-  it('renders footer content', () => {
-    render(<table><TableFooter>Footer Content</TableFooter></table>);
-    expect(screen.getByText('Footer Content')).toBeInTheDocument();
-  });
-
-  it('applies custom className and style', () => {
+  it('renders default footer and responds to click', () => {
+    const handleClick = jest.fn();
     render(
       <table>
-        <TableFooter
-          className="custom-footer"
-          style={{ backgroundColor: 'lightgray' }}
-        >
-          Styled Footer
+        <TableFooter onClick={handleClick}>
+          <tr><td>Total: $100</td></tr>
         </TableFooter>
       </table>
     );
-    const cell = screen.getByText('Styled Footer');
-    expect(cell).toHaveClass('custom-footer');
-    expect(cell).toHaveStyle({ backgroundColor: 'lightgray' });
+    const cell = screen.getByText('Total: $100');
+    fireEvent.click(cell);
+    expect(handleClick).toHaveBeenCalled();
   });
 
-  it('sets colSpan when provided', () => {
-    render(<table><TableFooter colSpan={3}>Spanning Footer</TableFooter></table>);
-    const cell = screen.getByText('Spanning Footer');
-    expect(cell).toHaveAttribute('colspan', '3');
+  it('renders disabled footer and does not respond to click', () => {
+    const handleClick = jest.fn();
+    render(
+      <table>
+        <TableFooter disabled onClick={handleClick}>
+          <tr><td>Total: $100</td></tr>
+        </TableFooter>
+      </table>
+    );
+    const cell = screen.getByText('Total: $100');
+    fireEvent.click(cell);
+    expect(handleClick).not.toHaveBeenCalled();
   });
 });

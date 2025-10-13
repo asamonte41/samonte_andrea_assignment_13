@@ -5,37 +5,48 @@ import styled from 'styled-components';
 const RadioButton: React.FC<RadioButtonProps> = ({
   label,
   name,
-  required = false,
-  options,
-  selectedValue,
-  onChange,
+  value,
+  checked = false,
+  disabled = false,
   className = '',
   style,
+  onChange,
 }) => {
+  const handleChange = () => {
+    if (!disabled) {
+      onChange?.(value);
+    }
+  };
+
   return (
-    <div className={`radio-group ${className}`} style={style}>
-      {label && (
-        <label>
-          {label}
-          {required && <span style={{ color: 'red', marginLeft: '0.25rem' }}>*</span>}
-        </label>
-      )}
-      {options.map((opt) => (
-        <label key={opt.value} style={{ display: 'block', marginTop: '0.5rem' }}>
-          <input
-            type="radio"
-            name={name}
-            value={opt.value}
-            checked={selectedValue === opt.value}
-            onChange={() => onChange?.(opt.value)}
-            required={required}
-          />
-          {opt.label}
-        </label>
-      ))}
-    </div>
+    <label
+      className={`radio-button ${className}`}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        marginRight: '1rem',
+        color: disabled ? '#999' : '#000',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        ...style,
+      }}
+    >
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        checked={checked}
+        disabled={disabled}
+        onChange={handleChange}
+        style={{ marginRight: '0.5rem' }}
+      />
+      {label}
+    </label>
   );
 };
 
 export default RadioButton;
+
+
+
+
 

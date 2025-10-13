@@ -4,19 +4,36 @@ import TableCell from '../TableCell/TableCell';
 
 const TableRow: React.FC<TableRowProps> = ({
   cells,
-  align = 'left',
+  disabled = false,
   className = '',
   style,
+  onClick,
+  children,
 }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onClick?.();
+    }
+  };
+
   return (
-    <tr className={className} style={style}>
-      {cells.map((cell, index) => (
-        <TableCell key={index} align={align}>
-          {cell}
-        </TableCell>
-      ))}
+    <tr
+      className={`table-row ${className}`}
+      style={{
+        backgroundColor: disabled ? '#f5f5f5' : 'transparent',
+        color: disabled ? '#999' : '#000',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.6 : 1,
+        ...style,
+      }}
+      onClick={handleClick}
+    >
+      {cells
+        ? cells.map((cell, index) => <td key={index}>{cell}</td>)
+        : children}
     </tr>
   );
 };
 
 export default TableRow;
+

@@ -1,38 +1,34 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TableRow from './TableRow';
 
 describe('TableRow Component', () => {
-  const cells = ['Alice', 30, 'Engineer'];
-
-  it('renders all cells', () => {
+  it('renders default row with cells and responds to click', () => {
+    const handleClick = jest.fn();
     render(
       <table>
         <tbody>
-          <TableRow cells={cells} />
+          <TableRow cells={['Alice', 'alice@example.com', 'Admin']} onClick={handleClick} />
         </tbody>
       </table>
     );
-    cells.forEach((text) => {
-      expect(screen.getByText(text.toString())).toBeInTheDocument();
-    });
+    const cell = screen.getByText('Alice');
+    fireEvent.click(cell);
+    expect(handleClick).toHaveBeenCalled();
   });
 
-  it('applies custom className and style', () => {
+  it('renders disabled row with cells and does not respond to click', () => {
+    const handleClick = jest.fn();
     render(
       <table>
         <tbody>
-          <TableRow
-            cells={cells}
-            className="custom-row"
-            style={{ backgroundColor: 'lightblue' }}
-          />
+          <TableRow cells={['Bob', 'bob@example.com', 'User']} disabled onClick={handleClick} />
         </tbody>
       </table>
     );
-    const row = screen.getByText('Alice').closest('tr');
-    expect(row).toHaveClass('custom-row');
-    expect(row).toHaveStyle({ backgroundColor: 'lightblue' });
+    const cell = screen.getByText('Bob');
+    fireEvent.click(cell);
+    expect(handleClick).not.toHaveBeenCalled();
   });
 });

@@ -1,33 +1,28 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react-webpack5';
 import TableCell from './TableCell';
+import { TableCellProps } from './TableCell.types';
 
-const meta: Meta<typeof TableCell> = {
+const meta: Meta<TableCellProps> = {
   title: 'Components/TableCell',
   component: TableCell,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof TableCell>;
+
+type Story = StoryObj<TableCellProps>;
 
 export const Default: Story = {
   args: {
-    children: 'Default Cell',
+    children: 'Alice',
+    onClick: () => alert('Cell clicked'),
   },
 };
 
-export const HeaderCell: Story = {
+export const Disabled: Story = {
   args: {
-    children: 'Header Cell',
-    isHeader: true,
-    align: 'center',
-  },
-};
-
-export const StyledCell: Story = {
-  args: {
-    children: 'Styled Cell',
-    style: { backgroundColor: '#f0f0f0', fontWeight: 'bold' },
+    children: 'Bob',
+    disabled: true,
   },
 };

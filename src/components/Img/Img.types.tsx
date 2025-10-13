@@ -1,8 +1,11 @@
 export interface ImgProps {
   src: string;
-  alt: string;
-  width?: number | string;
-  height?: number | string;
+  alt?: string;
+  disabled?: boolean;
+  width?: number;
+  height?: number;
   rounded?: boolean;
   className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
 }

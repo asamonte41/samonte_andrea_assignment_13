@@ -1,34 +1,27 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react-webpack5';
 import Card from './Card';
+import { CardProps } from './Card.types';
 
-const meta: Meta<typeof Card> = {
+const meta: Meta<CardProps> = {
   title: 'Components/Card',
   component: Card,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof Card>;
+
+type Story = StoryObj<CardProps>;
 
 export const Default: Story = {
   args: {
-    children: 'This is for basic card.',
+    children: 'This is a default card',
   },
 };
 
-export const WithHeader: Story = {
+export const Disabled: Story = {
   args: {
-    title: 'Business Systems Build and Testing',
-    subtitle: 'Assignment 12 Coding',
-    children: 'This card has a header.',
-  },
-};
-
-export const Styled: Story = {
-  args: {
-    title: 'Styled Card',
-    children: 'This card has custom styles.',
-    style: { backgroundColor: '#f0f0f0', border: '1px solid #ccc' },
+    children: 'This card is disabled',
+    disabled: true,
   },
 };

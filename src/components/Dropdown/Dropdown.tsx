@@ -8,24 +8,37 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   value,
   onChange,
+  disabled = false,
   className = '',
   style,
 }) => {
   return (
-    <div className={`dropdown ${className}`} style={style}>
+    <div className={`dropdown-wrapper ${className}`} style={style}>
       {label && (
-        <label htmlFor={name}>
+        <label htmlFor={name} style={{ display: 'block', marginBottom: '0.25rem' }}>
           {label}
-          {required && <span style={{ color: 'red', marginLeft: '0.25rem' }}>*</span>}
         </label>
       )}
       <select
-        id={name}
-        name={name}
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-        required={required}
-      >
+    id={name}
+    name={name}
+    value={value}
+    onChange={(e) => {
+      if (!disabled) {
+        onChange?.(e.target.value);
+      }
+    }}
+    disabled={disabled}
+    required={required}
+    style={{
+      padding: '0.5rem',
+      borderRadius: '0.25rem',
+      border: '1px solid #ccc',
+      backgroundColor: disabled ? '#eee' : '#fff',
+      color: disabled ? '#666' : '#000',
+      cursor: disabled ? 'not-allowed' : 'pointer',
+    }}
+  >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
@@ -37,3 +50,5 @@ const Dropdown: React.FC<DropdownProps> = ({
 };
 
 export default Dropdown;
+
+

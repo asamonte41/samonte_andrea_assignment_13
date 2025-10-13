@@ -6,5 +6,5 @@ import App from './App';
 
 test('this is test', () => {
   render(<App />);
-  expect(screen.getByText(/welcome/i)).toBeInTheDocument(); // Replace with actual visible text
+  expect(screen.getByText(/Business Systems Build and Testing/i)).toBeInTheDocument(); // Replace with actual visible text
 });

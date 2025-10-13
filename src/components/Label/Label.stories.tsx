@@ -16,21 +16,14 @@ export const Default: Story = {
   args: {
     children: 'Username',
     htmlFor: 'username',
+    onClick: () => alert('Label clicked'),
   },
 };
 
-export const Required: Story = {
+export const Disabled: Story = {
   args: {
-    children: 'Email',
-    htmlFor: 'email',
-    required: true,
-  },
-};
-
-export const WithCustomStyle: Story = {
-  args: {
-    children: 'Styled Label',
-    htmlFor: 'custom',
-    style: { fontWeight: 'bold', fontSize: '1.2rem' },
+    children: 'Username',
+    htmlFor: 'username',
+    disabled: true,
   },
 };

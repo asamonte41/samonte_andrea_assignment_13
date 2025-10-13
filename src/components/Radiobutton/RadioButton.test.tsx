@@ -1,22 +1,38 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import RadioButton from './RadioButton';
 
 describe('RadioButton Component', () => {
-  it('renders label and radio options', () => {
+  it('renders and responds to click', () => {
+    const handleChange = jest.fn();
     render(
       <RadioButton
-        label="Pick one"
-        name="choice"
-        selectedValue="a"
-        options={[
-          { label: 'Option A', value: 'a' },
-          { label: 'Option B', value: 'b' },
-        ]}
+        label="Option 1"
+        name="group1"
+        value="opt1"
+        checked={false}
+        onChange={handleChange}
       />
     );
-    expect(screen.getByLabelText('Option A')).toBeInTheDocument();
-    expect(screen.getByLabelText('Option B')).toBeInTheDocument();
+    const radio = screen.getByLabelText('Option 1');
+    fireEvent.click(radio);
+    expect(handleChange).toHaveBeenCalledWith('opt1');
+  });
+
+  it('renders disabled and does not respond to click', () => {
+    const handleChange = jest.fn();
+    render(
+      <RadioButton
+        label="Disabled Option"
+        name="group2"
+        value="disabled"
+        disabled
+        onChange={handleChange}
+      />
+    );
+    const radio = screen.getByLabelText('Disabled Option');
+    fireEvent.click(radio);
+    expect(handleChange).not.toHaveBeenCalled();
   });
 });
