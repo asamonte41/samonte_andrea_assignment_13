@@ -1,46 +1,134 @@
-# Getting Started with Create React App
+#README for assignment 12 coding
+#Name: Andrea Samonte
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+#--TOOLS--
 
-In the project directory, you can run:
+# Node.js 18+ (Recommended:20)
+# Docker
+# Git
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#--Set Up and Installation--
 
-### `npm test`
+#Create React App
+# npx create-react-app samonte_andrea_ui_garden --template typescript
+# cd samonte_andrea_ui_garden
+#This creates a React project using Typescript(including tsconfig.json)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#Install Storybook for React + Typescript
+# npx sb init
 
-### `npm run build`
+#Verify Storybooks works
+# npm run storybook
+#It will deafult open at: http://localhost:6006
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#Install Dependencies
+# npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#Run the React app
+# npm start
 
-### `npm run eject`
+#Run Storybook Locally (Live Dev Mode)
+# npm rum storybook
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#It will start Storybook on http://localhost:6006
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#--Building React and Storybook--
 
-## Learn More
+#Build React App
+# npm run build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#Build Storybook static site
+# npm run build-storybook
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#This will create files in: build/
+#Storybook static files in: storybook-static/
+
+
+
+#--Docker Setup--
+
+#Create the Dockerfile
+
+#Build the DockerImage
+# docker build -t samonte_andrea_coding_assignment12 .
+
+#Run the Container
+# docker run -d -p 8083:80 samonte_andrea_coding_assignment12
+
+#Open React App: http://localthost:8083/react
+#Storybook: http://localhost:8083/storybook
+
+
+
+#--Component Library--
+
+#Components Includes:
+
+# Button
+# Label
+# Text
+# Table (TableHeader, TableRow, TableCell, TableFooter)
+# Dropdown
+# Radio Button
+# Img
+# Hero Image
+# Card
+
+#Component Structure
+
+# ComponentName/
+  # ComponentName.tsx
+  # ComponentName.stories.tsx
+  # ComponentName.types.tsx
+  # ComponentName.tests.tsx
+  # index.ts
+
+#Styling and Responsive
+
+# Components are styled using Styled Components
+# All components has to be responsive
+
+#Functionality
+
+# Components have default and disabled states
+# Disabled state are greyd out and non clickable
+
+
+
+#--Initialize Git--
+
+#Go to your project folder path
+# cd "%USERPROFILE%"/Documents/samonte_andrea_ui_garden
+# git init
+
+#That creates a new local Git repository
+
+#Place all project files to Git
+# git add .
+
+#This stages all your files (React app, Storybook, Dockerfile,ReadME, etc.)
+
+#Make first commit
+# git commit -m "First commint"
+
+#Create a new Github Repo
+
+#Link your local repo to Github
+# git remote add origin https://github.com/asamonte41/samonte_andrea_ui_garden.git
+# git branch -M main
+# git push -u origin main
+
+#For future ongoing updtes
+# git add .
+# git commit -m "Imput Anything Here"
+# git push
+
+
+
+
