@@ -1,12 +1,12 @@
-import React from 'react';
-import { TableHeaderProps } from './TableHeader.types';
-import TableCell from '../TableCell/TableCell';
+import React from "react";
+import { TableHeaderProps } from "./TableHeader.types";
+import TableCell from "../TableCell/TableCell";
 
 const TableHeader: React.FC<TableHeaderProps> = ({
   headers,
   disabled = false,
-  align = 'left',
-  className = '',
+  align = "left",
+  className = "",
   style,
   onClick,
 }) => {
@@ -20,8 +20,8 @@ const TableHeader: React.FC<TableHeaderProps> = ({
     <thead
       className={`table-header ${className}`}
       style={{
-        backgroundColor: '#f0f0f0',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        backgroundColor: "#f0f0f0",
+        cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.6 : 1,
         ...style,
       }}
@@ -29,12 +29,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
     >
       <tr>
         {headers.map((header, index) => (
-          <TableCell
-            key={index}
-            isHeader
-            align={align}
-            disabled={disabled}
-          >
+          <TableCell key={index} isHeader align={align} disabled={disabled}>
             {header}
           </TableCell>
         ))}

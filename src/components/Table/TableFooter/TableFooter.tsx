@@ -1,10 +1,10 @@
-import React from 'react';
-import { TableFooterProps } from './TableFooter.types';
+import React from "react";
+import { TableFooterProps } from "./TableFooter.types";
 
 const TableFooter: React.FC<TableFooterProps> = ({
   children,
   disabled = false,
-  className = '',
+  className = "",
   style,
   onClick,
   colSpan,
@@ -19,9 +19,9 @@ const TableFooter: React.FC<TableFooterProps> = ({
     <tfoot
       className={`table-footer ${className}`}
       style={{
-        backgroundColor: '#f9f9f9',
-        color: disabled ? '#999' : '#000',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        backgroundColor: "#f9f9f9",
+        color: disabled ? "#999" : "#000",
+        cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.6 : 1,
         ...style,
       }}
@@ -35,4 +35,3 @@ const TableFooter: React.FC<TableFooterProps> = ({
 };
 
 export default TableFooter;
-

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface TableCellProps {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ export interface TableCellProps {
   className?: string;
   style?: React.CSSProperties;
   onClick?: () => void;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   colSpan?: number;
   isHeader?: boolean;
 }

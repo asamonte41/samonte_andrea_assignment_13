@@ -1,14 +1,14 @@
-import React from 'react';
-import { ImgProps } from './Img.types';
+import React from "react";
+import { ImgProps } from "./Img.types";
 
 const Img: React.FC<ImgProps> = ({
   src,
-  alt = '',
+  alt = "",
   disabled = false,
   width = 150,
   height = 150,
   rounded = false,
-  className = '',
+  className = "",
   style,
   onClick,
 }) => {
@@ -26,12 +26,12 @@ const Img: React.FC<ImgProps> = ({
       style={{
         width: `${width}px`,
         height: `${height}px`,
-        paddingTop: '10px',
-        borderRadius: rounded ? '8px' : '8px',
-        objectFit: 'cover',
+        paddingTop: "10px",
+        borderRadius: rounded ? "8px" : "8px",
+        objectFit: "cover",
         opacity: disabled ? 0.5 : 1,
-        pointerEvents: disabled ? 'none' : 'auto',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        pointerEvents: disabled ? "none" : "auto",
+        cursor: disabled ? "not-allowed" : "pointer",
         ...style,
       }}
       onClick={handleClick}

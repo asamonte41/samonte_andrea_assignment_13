@@ -1,6 +1,5 @@
-import React from 'react';
-import { RadioButtonProps } from './RadioButton.types';
-import styled from 'styled-components';
+import React from "react";
+import { RadioButtonProps } from "./RadioButton.types";
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   label,
@@ -8,7 +7,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   value,
   checked = false,
   disabled = false,
-  className = '',
+  className = "",
   style,
   onChange,
 }) => {
@@ -22,11 +21,11 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     <label
       className={`radio-button ${className}`}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        marginRight: '1rem',
-        color: disabled ? '#999' : '#000',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        display: "inline-flex",
+        alignItems: "center",
+        marginRight: "1rem",
+        color: disabled ? "#999" : "#000",
+        cursor: disabled ? "not-allowed" : "pointer",
         ...style,
       }}
     >
@@ -37,7 +36,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         checked={checked}
         disabled={disabled}
         onChange={handleChange}
-        style={{ marginRight: '0.5rem' }}
+        style={{ marginRight: "0.5rem" }}
       />
       {label}
     </label>
@@ -45,8 +44,3 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 };
 
 export default RadioButton;
-
-
-
-
-

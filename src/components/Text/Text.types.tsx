@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface TextProps {
   id?: string;
   children: React.ReactNode;

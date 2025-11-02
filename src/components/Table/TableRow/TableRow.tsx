@@ -1,11 +1,10 @@
-import React from 'react';
-import { TableRowProps } from './TableRow.types';
-import TableCell from '../TableCell/TableCell';
+import React from "react";
+import { TableRowProps } from "./TableRow.types";
 
 const TableRow: React.FC<TableRowProps> = ({
   cells,
   disabled = false,
-  className = '',
+  className = "",
   style,
   onClick,
   children,
@@ -20,9 +19,9 @@ const TableRow: React.FC<TableRowProps> = ({
     <tr
       className={`table-row ${className}`}
       style={{
-        backgroundColor: disabled ? '#f5f5f5' : 'transparent',
-        color: disabled ? '#999' : '#000',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        backgroundColor: disabled ? "#f5f5f5" : "transparent",
+        color: disabled ? "#999" : "#000",
+        cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.6 : 1,
         ...style,
       }}
@@ -36,4 +35,3 @@ const TableRow: React.FC<TableRowProps> = ({
 };
 
 export default TableRow;
-

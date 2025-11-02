@@ -1,5 +1,5 @@
-import React from 'react';
-import { DropdownProps } from './Dropdown.types';
+import React from "react";
+import { DropdownProps } from "./Dropdown.types";
 
 const Dropdown: React.FC<DropdownProps> = ({
   label,
@@ -9,36 +9,39 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
   onChange,
   disabled = false,
-  className = '',
+  className = "",
   style,
 }) => {
   return (
     <div className={`dropdown-wrapper ${className}`} style={style}>
       {label && (
-        <label htmlFor={name} style={{ display: 'block', marginBottom: '0.25rem' }}>
+        <label
+          htmlFor={name}
+          style={{ display: "block", marginBottom: "0.25rem" }}
+        >
           {label}
         </label>
       )}
       <select
-    id={name}
-    name={name}
-    value={value}
-    onChange={(e) => {
-      if (!disabled) {
-        onChange?.(e.target.value);
-      }
-    }}
-    disabled={disabled}
-    required={required}
-    style={{
-      padding: '0.5rem',
-      borderRadius: '0.25rem',
-      border: '1px solid #ccc',
-      backgroundColor: disabled ? '#eee' : '#fff',
-      color: disabled ? '#666' : '#000',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-    }}
-  >
+        id={name}
+        name={name}
+        value={value}
+        onChange={(e) => {
+          if (!disabled) {
+            onChange?.(e.target.value);
+          }
+        }}
+        disabled={disabled}
+        required={required}
+        style={{
+          padding: "0.5rem",
+          borderRadius: "0.25rem",
+          border: "1px solid #ccc",
+          backgroundColor: disabled ? "#eee" : "#fff",
+          color: disabled ? "#666" : "#000",
+          cursor: disabled ? "not-allowed" : "pointer",
+        }}
+      >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
@@ -50,5 +53,3 @@ const Dropdown: React.FC<DropdownProps> = ({
 };
 
 export default Dropdown;
-
-

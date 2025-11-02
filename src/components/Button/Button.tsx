@@ -1,20 +1,19 @@
-import React from 'react';
-import { ButtonProps } from './Button.types';
-import styled from 'styled-components';
+import React from "react";
+import { ButtonProps } from "./Button.types";
+import styled from "styled-components";
 
-export const StyledButton = styled.button<{ disabled?: boolean }>
-`
+export const StyledButton = styled.button<{ disabled?: boolean }>`
   padding: 10px 20px;
   font-size: 16px;
-  background-color: ${({ disabled }) => (disabled ? '#ccc' : '#007bff')};
+  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#007bff")};
   color: white;
   border: none;
   border-radius: 4px;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? '#ccc' : '#0056b3')};
+    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0056b3")};
   }
 
   @media (max-width: 600px) {
@@ -26,7 +25,7 @@ export const StyledButton = styled.button<{ disabled?: boolean }>
 const Button: React.FC<ButtonProps> = ({
   children,
   disabled = false,
-  className = '',
+  className = "",
   style,
   onClick,
 }) => {
@@ -34,13 +33,13 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`button ${className}`}
       style={{
-        padding: '0.5rem 1rem',
-        fontSize: '1rem',
-        borderRadius: '0.25rem',
-        border: '1px solid #ccc',
-        backgroundColor: disabled ? '#eee' : '#007bff',
-        color: disabled ? '#666' : '#fff',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        padding: "0.5rem 1rem",
+        fontSize: "1rem",
+        borderRadius: "0.25rem",
+        border: "1px solid #ccc",
+        backgroundColor: disabled ? "#eee" : "#007bff",
+        color: disabled ? "#666" : "#fff",
+        cursor: disabled ? "not-allowed" : "pointer",
         ...style,
       }}
       disabled={disabled}

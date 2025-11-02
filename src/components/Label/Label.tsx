@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import type { LabelProps } from './Label.types';
+import React from "react";
+import styled from "styled-components";
+import type { LabelProps } from "./Label.types";
 
 export const StyledLabel = styled.label`
   display: inline-block;
@@ -19,7 +19,7 @@ const Label: React.FC<LabelProps> = ({
   children,
   htmlFor,
   disabled = false,
-  className = '',
+  className = "",
   style,
   onClick,
 }) => {
@@ -34,9 +34,9 @@ const Label: React.FC<LabelProps> = ({
       htmlFor={htmlFor}
       className={`label ${className}`}
       style={{
-        display: 'inline-block',
-        color: disabled ? '#999' : '#000',
-        cursor: disabled ? 'not-allowed' : 'pointer',
+        display: "inline-block",
+        color: disabled ? "#999" : "#000",
+        cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.6 : 1,
         ...style,
       }}
@@ -48,5 +48,3 @@ const Label: React.FC<LabelProps> = ({
 };
 
 export default Label;
-
-
