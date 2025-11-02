@@ -8,8 +8,8 @@ import { Img } from "./components/Img";
 import { TableRow } from "./components/Table/TableRow";
 import { TableFooter } from "./components/Table/TableFooter";
 import { TableCell } from "./components/Table/TableCell";
-import { Button } from "./components/Button";
-import { Label } from "./components/Label";
+import Button from "./components/Button/Button";
+import Label from "./components/Label/Label";
 import { Text } from "./components/Text";
 import { Dropdown } from "./components/Dropdown";
 
