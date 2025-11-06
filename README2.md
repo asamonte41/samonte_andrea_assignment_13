@@ -109,7 +109,7 @@
 
 #Fix ESLint Issues
 
-# npm run lint:fix
+# npm run lint-fix
 
 #Run Tests Before Commit
 
